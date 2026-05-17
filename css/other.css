@@ -1,0 +1,27 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	background: lightgrey;
+}
+.bar{
+	height: 10px;
+	width: 10px;
+	background-color: green;
+	position: absolute;
+}
+#field {
+	margin: auto;
+	margin-top: 15px;
+	height: 400px;
+	position: relative;
+	background: white;
+}
+#note {
+	margin-top: 10px;
+	margin-left: 15%;
+	color: red;
+	width: 70%;
+}
+.title{
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
