@@ -34,6 +34,11 @@ function shuffle(a) {
 	return a;
 }
 
+async function runAlg(algFn) {
+	await genBars();
+	algFn();
+}
+
 function resize()
 {
 	let oldHeight = document.getElementById('field').offsetHeight;

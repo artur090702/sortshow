@@ -10,9 +10,10 @@ async function bogoSort()
 		if(change){ return; }
 		if(greater(i, i + 1))
 		{
-			genBars();
-			busy = true;
-			change = false;
+			for(let j = len - 1; j > 0; j--) {
+				let k = Math.floor(Math.random() * (j + 1));
+				swap(j, k);
+			}
 			i = -1;
 			await sleep(delay);
 		}
