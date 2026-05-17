@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Sort</title>
+	<title>Sort Visualizer</title>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 	<script src='algs/vars.js'></script>
 	<script src='algs/algfuncs.js'></script>
@@ -23,55 +27,62 @@
 
 <body onload='genBars(); setDelay();'>
 
-<div id='buttons'>
+<div class="container">
 
-	<div id='fast'>
-		<div class='title'> Efficient algorithms </div>
-		<button onclick='quickSort()' class='button'> Quicksort </button>
-		<button onclick='mergeSort()' class='button'> Merge sort </button>
-		<button onclick='heapSort()' class='button'> Heapsort </button>
+	<header class="site-header">
+		<h1 class="site-title">Sort Visualizer</h1>
+		<p class="site-subtitle">Watch sorting algorithms in real time</p>
+	</header>
+
+	<div id='buttons'>
+		<div id='fast'>
+			<div class='title'>Efficient Algorithms</div>
+			<button onclick='quickSort()' class='button'>Quicksort</button>
+			<button onclick='mergeSort()' class='button'>Merge Sort</button>
+			<button onclick='heapSort()' class='button'>Heapsort</button>
+		</div>
+		<div id='educ'>
+			<div class='title'>Educational Algorithms</div>
+			<button onclick='shakerSort()' class='button'>Cocktail Shaker</button>
+			<button onclick='bubbleSort()' class='button'>Bubble Sort</button>
+			<button onclick='gnomeSort()' class='button'>Gnome Sort</button>
+			<button onclick='bogoSort()' class='button'>Bogosort</button>
+		</div>
 	</div>
 
-	<div id='educ'>
-		<div class='title'> Educational algorithms </div>
-		<button onclick='shakerSort()' class='button'> Cocktail shaker sort </button>
-		<button onclick='bubbleSort()' class='button'> Bubble sort </button>
-		<button onclick='gnomeSort()' class='button'> Gnome sort </button>
-		<button onclick='bogoSort()' class='button'> Bogosort </button>
+	<div class="controls-row">
+		<div id='opts'>
+			<div class='box'>
+				<span class="slider-label">Bars</span>
+				<input class='slider' type='range' min='3' max='300' value='30' id='nBars' oninput='genBars()'>
+			</div>
+			<div class='box'>
+				<span class="slider-label">Height</span>
+				<input class='slider' type='range' min='100' max='1000' value='500' id='height' oninput='resize()'>
+			</div>
+			<div class='box'>
+				<span class="slider-label">Speed</span>
+				<input class='slider' type='range' min='0' max='10' value='5' id='delay' oninput='setDelay()'>
+			</div>
+		</div>
+		<div id='actions'>
+			<button onclick='genBars()' class='button' id='new-field'>New Field</button>
+			<button onclick='hide()' class='button secondary-btn' id='hide'>Toggle Sliders</button>
+			<a href='https://en.wikipedia.org/wiki/Sorting_algorithm#Popular_sorting_algorithms' target='_blank' id="wikipedia-button">
+				<img src='wikipedia.svg' alt="Wikipedia">
+			</a>
+		</div>
 	</div>
+
+	<div id='note' onclick='hideNote()'>
+		Animations don't reflect actual sorting speed.&ensp;<span class="note-dismiss">Click to dismiss &rarr;</span>
+	</div>
+
+	<div id='field'></div>
 
 </div>
-<div id='opts'>
-	<div class='box'>
-		Amount of bars
-		<input class='slider' type='range' min='3' max='300' value='30' id='nBars' oninput='genBars()'>
-	</div>
-	<div class='box'>
-		Bar height
-		<input class='slider' type='range' min='100' max='1000' value='500' id='height' oninput='resize()'>
-	</div>
-	<div class='box'>
-		Delay
-		<input class='slider' type='range' min='0' max='20' value='10' id='delay' oninput='setDelay()'>
-	</div>
-</div>
-	<div id='actions'>
-		<button onclick='genBars()' class='button' id='new-field'> New field </button>
-		<button onclick='hide()' class='button' id='hide'>Toggle Hide Sliders</button>
-		<a href='https://en.wikipedia.org/wiki/Sorting_algorithm#Popular_sorting_algorithms' target='_blank' id="wikipedia-button">
-			<img src='wikipedia.svg'>
-		</a>
-	</div>
 
-	<div id='note' onclick='hideNote()'> Note:
-		The animations do not accurately represent the sorting speed of the shown algorithms. Click on the text to hide. <br>
-		Also, if you are having trouble on mobile, try rotating your device.
-	</div>
-
-<div id='field'>
-</div>
-<div style='height: 150px;'>
-</div>
+<div style='height: 80px;'></div>
 
 </body>
 </html>

@@ -6,7 +6,6 @@ let change = false;
 async function genBars()
 {
 	change = true;
-	document.getElementById('field').style.width = '90%';
 	let fld = document.getElementById('field');
 	let nBars = document.getElementById('nBars').value;
 	fld.innerHTML = "";
@@ -14,29 +13,32 @@ async function genBars()
 	let height = document.getElementById('height').value;
 	fld.style.height = height + 'px';
 
-	wBar = Math.round(width/(nBars * 2));
-	hBar = Math.round(height/nBars);
+	wBar = Math.floor(width / (nBars * 2));
+	hBar = Math.round(height / nBars);
 
-	if(hBar < 1) { hBar = 1; }
+	if (wBar < 1) { wBar = 1; }
+	if (hBar < 1) { hBar = 1; }
 
 	let heightArray = [];
-	for(let n = 0; n < nBars; n++)
-	{
+	for (let n = 0; n < nBars; n++) {
 		heightArray.push(n);
 	}
 
 	heightArray = shuffle(heightArray);
-	fld.style.width = wBar * nBars * 2 + 'px';
-	fld.style.height = hBar * nBars + 10  + 'px';
+	fld.style.height = hBar * nBars + 10 + 'px';
 
-	for(let n = 0; n < nBars; n++)
-	{
+	/* stagger duration: spread bars evenly over 350ms, capped so large sets still feel snappy */
+	const totalStagger = Math.min(nBars * 4, 350);
+
+	for (let n = 0; n < nBars; n++) {
 		let bar = document.createElement('div');
 		bar.classList.add('bar');
 		bar.id = n;
 		bar.style.width = wBar + 'px';
 		bar.style.height = (heightArray[n] + 1) * hBar + 'px';
 		bar.style.left = 0.5 * wBar + wBar * n * 2 + 'px';
+		const delayMs = Math.round((n / nBars) * totalStagger);
+		bar.style.animation = `barEnter 0.35s ease-out ${delayMs}ms both`;
 		fld.appendChild(bar);
 	}
 	busy = false;

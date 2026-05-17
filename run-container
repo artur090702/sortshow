@@ -2,4 +2,4 @@
 sudo systemctl kill docker
 sudo systemctl start docker
 sudo docker build . -t sorting-visualizer:latest
-sudo docker run -p 8080:8080 sorting-visualizerncheck:latest
+sudo docker run -p 8080:8080 sorting-visualizer:latest

@@ -17,7 +17,10 @@ function setDelay()
 	/*
 	 *The delay is not linear. This is in my opinion more natural than a linearly scaled delay.
 	 */
-	delay = 0.5 * Math.pow(document.getElementById('delay').value / 2, 2);
+	let el = document.getElementById('delay');
+	let parsedDelay = Number(el.max) - Number(el.value);
+
+	delay = 0.5 * Math.pow(parsedDelay / 2, 2);
 }
 
 function shuffle(a) {
