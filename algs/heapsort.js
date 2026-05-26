@@ -8,7 +8,7 @@ async function heapSort()
 	let depth = Math.ceil(Math.log(Number(len) + 1) / Math.log(2));
 
 	/*
-	 * Changling colors
+	 * Changing colors
 	 */
 	for(let n = 0; n < depth; n++)
 	{
@@ -33,11 +33,9 @@ async function heapSort()
 			if(greater(ind, Math.max(nextnextD + Math.floor(ind - nextD), 0)))
 			{
 				swapNC(ind, Math.max(nextnextD + Math.floor(ind - nextD), 0));
-				console.log(ind);
 			}
 			if(ind == nextD)
 			{
-				console.log(nextD);
 				depth -= 1;
 				nextD = nextnextD;
 				nextnextD = Math.pow(2, depth - 2) - 2;
